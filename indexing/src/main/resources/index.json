@@ -7,19 +7,12 @@
   },
   "mappings": {
     "properties": {
-      "links": {
-        "type": "keyword",
-        "index": "false"
-      },
-      "size": {
-        "type": "long"
-      },
-      "title": {
-        "type": "text"
-      },
       "url": {
         "type": "keyword",
         "index": "false"
+      },
+      "title": {
+        "type": "text"
       },
       "body": {
         "properties": {
@@ -34,8 +27,18 @@
           }
         }
       },
+      "size": {
+        "type": "long"
+      },
+      "updatedTime": {
+        "type": "date"
+      },
       "tags": {
         "type": "keyword"
+      },
+      "links": {
+        "type": "keyword",
+        "index": "false"
       }
     }
   }

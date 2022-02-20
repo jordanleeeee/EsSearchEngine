@@ -3,35 +3,31 @@ import core.framework.util.Strings;
 import es.domain.WebContent;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import util.FileUtils;
 import util.StringUtils;
-import util.WebBrowser;
-import util.WebSiteUtils;
+import util.WebsiteUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Optional;
 
 public class WebSiteParser {
     private Optional<String> getHtmlDoc(String url, String possibleCacheLocation, boolean jsRenderingEnabled) {
         try {
-            File file = new File(possibleCacheLocation);
-            String html;
-            if (file.exists()) {
+            Optional<String> cachedHtml = FileUtils.read(possibleCacheLocation);
+            if (cachedHtml.isPresent()) {
                 System.out.println("get from cache");
-                return Optional.of(new String(new FileInputStream(file).readAllBytes()));
+                return cachedHtml;
             }
-//            return Optional.empty();    // only fetch from cache
-            if (jsRenderingEnabled) {
-                html = WebBrowser.getInstance().getPageContent(url);
-            } else {
-                html = Jsoup.connect(url).get().html();
-            }
-
-            if (!html.substring(0, 15).equalsIgnoreCase("<!doctype html>")) return Optional.empty();
-            return Optional.of(html);
-        } catch (IOException e) {
+            return Optional.empty();    // only fetch from cache
+//            String html;
+//            if (jsRenderingEnabled) {
+//                html = WebBrowser.getInstance().getPageContent(url);
+//            } else {
+//                html = Jsoup.connect(url).get().html();
+//            }
+//
+//            if (!html.substring(0, 15).equalsIgnoreCase("<!doctype html>")) return Optional.empty();
+//            return Optional.of(html);
+        } catch (Exception e) {
             e.printStackTrace();
             return Optional.empty();
         }
@@ -48,8 +44,9 @@ public class WebSiteParser {
             content.url = url;
             content.title = htmlDoc.title();
             content.size = htmlDoc.body().text().getBytes().length;
-            content.body = WebSiteUtils.getPageBody(htmlDoc);
-            content.links = WebSiteUtils.getLinkOfPage(baseUrl, htmlDoc);
+            content.body = WebsiteUtils.getPageBody(htmlDoc);
+            content.links = WebsiteUtils.getLinkOfPage(baseUrl, htmlDoc);
+            content.updatedTime = SitemapManager.getInstance().getSiteModificationTime(url);
             content.tags.addAll(StringUtils.getTags(content.title));
             content.tags.addAll(StringUtils.getTags(content.body.h1));
             content.tags.addAll(StringUtils.getTags(content.body.h2));
@@ -59,13 +56,7 @@ public class WebSiteParser {
         });
     }
 
-    private void saveHtmlToCacheIfNeeded(String cachePath, String html) {
-        if (!new File(cachePath).exists()) {
-            try (FileWriter fileWriter = new FileWriter(cachePath)) {
-                fileWriter.write(html);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public void saveHtmlToCacheIfNeeded(String cachePath, String html) {
+        FileUtils.save(cachePath, html);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author Jordan
  */
-public class WebSiteUtils {
+public class WebsiteUtils {
     public static List<String> getLinkOfPage(String baseUrl, Document htmlDoc) {
         List<String> result = new ArrayList<>();
         for (Element linkElement : htmlDoc.select("a")) {

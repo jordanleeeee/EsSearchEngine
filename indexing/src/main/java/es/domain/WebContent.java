@@ -3,6 +3,7 @@ package es.domain;
 import core.framework.api.json.Property;
 import core.framework.api.validate.NotNull;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,9 @@ public class WebContent {
     @NotNull
     @Property(name = "size")
     public Integer size;
+
+    @Property(name = "updatedTime")
+    public ZonedDateTime updatedTime;
 
     @NotNull
     @Property(name = "tags")

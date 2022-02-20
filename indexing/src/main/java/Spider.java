@@ -1,6 +1,5 @@
 import es.IndexingManager;
 import es.domain.WebContent;
-import util.WebBrowser;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -14,6 +13,7 @@ import java.util.Set;
 public class Spider {
     WebSiteParser parser = new WebSiteParser();
     IndexingManager indexingService = IndexingManager.getInstance();
+    SitemapManager sitemapManager = SitemapManager.getInstance();
 
     private boolean isTargetedSite(String siteName, String url, String targetedSite) {
         if (siteName.equals("subway")) {
@@ -24,8 +24,9 @@ public class Spider {
         return url.startsWith(targetedSite);
     }
 
-    public void BFS(String url, int limit, boolean jsRenderingEnabled) {
+    public void bfs(String url, int limit, boolean jsRenderingEnabled) {
         String siteName = url.substring(url.indexOf("www.") + 4, url.indexOf(".com"));
+        sitemapManager.loadSitemap(siteName);
         Queue<String> queue = new LinkedList<>();
         Set<String> visitedSite = new HashSet<>();
         queue.add(url);
@@ -46,13 +47,6 @@ public class Spider {
             queue.addAll(webContent.links);
         }
         indexingService.flushBulkRequest();
-    }
-
-    public static void main(String[] args) {
-        Spider spider = new Spider();
-        spider.BFS("https://www.mcdonalds.com.hk/en", 10, true);
-        spider.BFS("https://www.starbucks.com.hk", 10, true);
-//        spider.BFS("https://www.subway.com.hk", 1000, false);
-        WebBrowser.getInstance().closeBrowser();
+        sitemapManager.clearSiteMap();
     }
 }
