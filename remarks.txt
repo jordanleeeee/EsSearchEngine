@@ -1,0 +1,5 @@
+mapping type
+keyword vs text
+
+text fields are analyzed at the time of indexing, and keyword fields are not
+so keyword can only search by complete match

@@ -1,0 +1,207 @@
+<!doctype html><!--[if gt IE 8]><!-->
+<html class="no-js en-us" lang="en-US">
+ <!--<![endif]--> 
+ <head id="Head1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-ua-compatible" content="IE=edge"> <!-- --------------------------------- Head Script --------------------------------- --> <!-- plugin --> 
+  <script type="text/javascript" src="/workshop/include/js/jquery-3.5.1.min.js"></script> 
+  <script type="text/javascript" src="/workshop/include/js/jquery.nicescroll.min.js"></script> 
+  <script type="text/javascript" src="/workshop/include/js/bootstrap.min.js"></script> 
+  <script type="text/javascript" src="/workshop/include/js/main.js"></script> 
+  <script type="text/javascript" src="/include/js/resources.js?v=2"></script> <!--[if lt IE 8]>
+        <script type="text/javascript" src='/include/js/plugin/json2.js'></script>
+    <![endif]--> 
+  <link rel="stylesheet" href="/workshop/include/css/bootstrap.min.css" type="text/css"> 
+  <link rel="stylesheet" href="/workshop/include/css/common.css" type="text/css"> 
+  <link rel="stylesheet" href="/workshop/include/css/fontello.css" type="text/css"> <!-- ------------------------------- Head Script END ------------------------------- --> 
+  <link rel="shortcut icon" href="/images/favicon.ico"> 
+  <link href="/WebResource.axd?d=uUqrUSHaih7d4aLOal9TmzqHqZSXJCYVk3cmcZ2ot1cFQx8vcWJREtZH9hJRe2mIs1r4SgOKH8fuMkOtYudVFaDpZ3zsrRZuvZ57-kmvxwdt_RP-PHeO7SdPm2DiiwM34JIojKcGgjO05A6lwnMxFQ2&amp;t=636838621289559003" type="text/css" rel="stylesheet" class="Telerik_stylesheet">
+  <link href="/WebResource.axd?d=fLxxJ9GxfDOjysXrUVyEMAohdKOd_qMeFE9FcbVBvWz91NyBRF9a5r-8tdSIxk3TsdSMRZ0Sm3ITZYtyt4jmwxcB47ALazq3S-xo5GNjjT6rpyEMjoiUxrT3MbXhqdBo1jXuouogiv8uhCaG4eiKLXbyVQelW3u1FtNZeqWGHes1&amp;t=636838621287618892" type="text/css" rel="stylesheet" class="Telerik_stylesheet">
+  <title>
+	Starbucks® Coffee Workshop
+</title>
+ </head> 
+ <body id="body"> 
+  <form method="post" action="./home.aspx?alias=coffeeworkshop&amp;lang=en-us" id="form1"> 
+   <div class="aspNetHidden"> 
+    <input type="hidden" name="RadScriptManager_TSM" id="RadScriptManager_TSM" value=""> 
+    <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""> 
+    <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""> 
+    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUIODkyMDY1NDcPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCZg9kFgICAQ9kFgICAQ9kFgYCAQ9kFgICAQ9kFgZmDxYCHgtfIUl0ZW1Db3VudAICFgRmD2QWBAIBDw8WAh4EVGV4dAUmU3RhcmJ1Y2tzPHN1cD7Crjwvc3VwPiBDb2ZmZWUgV29ya3Nob3AWBB4NYXJpYS1leHBhbmRlZAUEdHJ1ZR4LZGF0YS10YXJnZXQFJyNDcGhIZWFkZXJfSGVhZGVyX1JwdE1haW5NZW51X1N1Yk1lbnVfMGQCAw8WBh4FY2xhc3MFD25hdiBjb2xsYXBzZSBpbh4PYXJpYS1sYWJlbGxlZGJ5BSdDcGhIZWFkZXJfSGVhZGVyX1JwdE1haW5NZW51X0J0blRpdGxlXzAfAwUEdHJ1ZRYIAgEPD2QWAh4EaHJlZgUwL2V2ZW50YW5kd29ya3Nob3AvaG9tZS5hc3B4P2FsaWFzPWNvZmZlZXdvcmtzaG9wZAIDDw9kFgIfBwU1L2V2ZW50YW5kd29ya3Nob3AvaG9tZS5hc3B4P2FsaWFzPWNvZmZlZXdvcmtzaG9wI21vcmVkAgUPD2QWAh8HBTQvZXZlbnRhbmR3b3Jrc2hvcC9ob21lLmFzcHg/YWxpYXM9Y29mZmVld29ya3Nob3AjdG5jZAIHDw9kFgIfBwU4L2V2ZW50YW5kd29ya3Nob3AvcmVnaXN0cmF0aW9uLmFzcHg/YWxpYXM9Y29mZmVld29ya3Nob3BkAgEPZBYEAgEPDxYCHwIFIENvZmZlZSBhbmQgRm9vZCBUYXN0aW5nIFdvcmtzaG9wFgIfBAUnI0NwaEhlYWRlcl9IZWFkZXJfUnB0TWFpbk1lbnVfU3ViTWVudV8xZAIDDxYCHwYFJ0NwaEhlYWRlcl9IZWFkZXJfUnB0TWFpbk1lbnVfQnRuVGl0bGVfMRYIAgEPD2QWAh8HBUYvZXZlbnRhbmR3b3Jrc2hvcC9ob21lLmFzcHg/YWxpYXM9bGczLWNvZmZlZS1hbmQtZm9vZC10YXN0aW5nLXdvcmtzaG9wZAIDDw9kFgIfBwVLL2V2ZW50YW5kd29ya3Nob3AvaG9tZS5hc3B4P2FsaWFzPWxnMy1jb2ZmZWUtYW5kLWZvb2QtdGFzdGluZy13b3Jrc2hvcCNtb3JlZAIFDw9kFgIfBwVKL2V2ZW50YW5kd29ya3Nob3AvaG9tZS5hc3B4P2FsaWFzPWxnMy1jb2ZmZWUtYW5kLWZvb2QtdGFzdGluZy13b3Jrc2hvcCN0bmNkAgcPD2QWAh8HBU4vZXZlbnRhbmR3b3Jrc2hvcC9yZWdpc3RyYXRpb24uYXNweD9hbGlhcz1sZzMtY29mZmVlLWFuZC1mb29kLXRhc3Rpbmctd29ya3Nob3BkAgEPD2QWAh8HBTMvZXZlbnRhbmR3b3Jrc2hvcC9zaWdub3V0LmFzcHg/YWxpYXM9Y29mZmVld29ya3Nob3BkAgMPDxYCHgdWaXNpYmxlZxYCHwcFMi9ldmVudGFuZHdvcmtzaG9wL3NpZ25pbi5hc3B4P2FsaWFzPWNvZmZlZXdvcmtzaG9wZAICD2QWCAIBDxYCHgVzdHlsZQU5YmFja2dyb3VuZC1pbWFnZTogdXJsKCdGaWxlcy9Db2ZmZWVXb3Jrc2hvcC9iYW5uZXIucG5nJyk7ZAIDDxYCHwkFNWJhY2tncm91bmQtaW1hZ2U6IHVybCgnRmlsZXMvQ29mZmVlV29ya3Nob3AvYmcucG5nJyk7Fg4CAQ8WAh8CBckCPGRpdiBjbGFzcz0iY2hlZXItcGFydHktdGl0bGUgdGV4dC11cHBlcmNhc2UiPkV4cGxvcmluZyBDb2ZmZWUgV2l0aCBVczxiciAvPg0KwqA8L2Rpdj4NCkxhdHRlIEFydCBXb3Jrc2hvcA0KDQo8dWwgY2xhc3M9ImNvbC1zbS02Ij4NCgk8bGk+PHNwYW4+V2hhdCBpcyBFc3ByZXNzbz88L3NwYW4+PC9saT4NCgk8bGk+PHNwYW4+U3RlYW1pbmcgVGhlIFBlcmZlY3QgTWlsazwvc3Bhbj48L2xpPg0KCTxsaT48c3Bhbj5DcmFmdGluZyBFc3ByZXNzbyBCZXZlcmFnZXM8L3NwYW4+PC9saT4NCgk8bGk+PHNwYW4+UHJhY3RpY2luZyBMYXR0ZSBBcnQ8L3NwYW4+PC9saT4NCjwvdWw+DQpkAgUPFgIfAgUqTGF0dGUgQXJ0IFdvcmtzaG9wPGJyPiAoZXZlcnkgTW9uIGFuZCBUdWUpZAIHD2QWAgIDDxYCHwIFDzE5OjAwIOKAkyAyMTowMGQCCw8WAh8CBUVFYXN0IEFzaWEgTWFuc2lvbiBTdGFyYnVja3MgU3RvcmUsIDIvRiwgMjctMjkgSGVubmVzc3kgUm9hZCwgV2FuIENoYWlkAg8PFgIfAgUNJDQ5NSBwZXIgaGVhZGQCEQ8WAh8IaGQCEw8WAh8CBSgqVGhpcyB3b3Jrc2hvcCBpcyBjb25kdWN0ZWQgaW4gQ2FudG9uZXNlZAIFDxYCHwkFPWJhY2tncm91bmQtaW1hZ2U6IHVybCgnRmlsZXMvQ29mZmVlV29ya3Nob3AvYmdfaW1nX3dlYi5qcGcnKTsWAgIBDxYCHwIF/A08ZGl2IGNsYXNzPSJjaGVlci1wYXJ0eS1kZXRhaWwiPg0KPGgzIGNsYXNzPSJjaGVlci1wYXJ0eS10aXRsZS0yIGhvbWUtaW50cm8iPjx1PjxiPlNoYXJlIFdoYXQgV2UgTG92ZSBieSBPdXIgQ29mZmVlIE1hc3RlcjwvYj48L3U+PC9oMz4NCjwvZGl2Pg0KDQo8ZGl2IGNsYXNzPSJjaGVlci1wYXJ0eS1kZXRhaWwiPg0KPHAgY2xhc3M9ImhvbWUtaW50cm8iPkFsbCBjb2ZmZWUgd29ya3Nob3BzIHdpbGwgYmUgaG9zdGVkIGJ5IG91ciBwcm9mZXNzaW9uYWwgQ29mZmVlIE1hc3RlcnMgaW4gYmxhY2sgYXByb24uIEV2ZXJ5IENvZmZlZSBNYXN0ZXIgaGFzIHRvIGNvbXBsZXRlIGEgc2VyaWVzIG9mIGNvZmZlZSBrbm93bGVkZ2UgYW5kIHByYWN0aWNhbCBjZXJ0aWZpY2F0aW9ucyB0byByZWNlaXZlIHRoZWlyIGJsYWNrIGFwcm9uLiBPdXIgQ29mZmVlIE1hc3RlcnMgYXJlIGRlbGlnaHRlZCB0byBoYXZlIHRoZSBvcHBvcnR1bml0eSB0byBzaGFyZSB0aGVpciBsb3ZlIGFuZCBwYXNzaW9uIHRvIHlvdSBhYm91dCBjb2ZmZWUuPC9wPg0KPC9kaXY+DQoNCjxkaXYgY2xhc3M9ImNoZWVyLXBhcnR5LWRldGFpbCI+DQo8aDMgY2xhc3M9ImNoZWVyLXBhcnR5LXRpdGxlLTIgaG9tZS1pbnRybyI+PHU+PGI+RWFzdCBBc2lhIE1hbnNpb24gU3RhcmJ1Y2tzIOKAkyBUaGUgU3RhcnQgb2YgQ29mZmVlIEpvdXJuZXk8L2I+PC91PjwvaDM+DQoNCjxwIGNsYXNzPSJob21lLWludHJvIj5XaGVuIHlvdSBhcmUgdmlzaXRpbmcgb3VyIHRocmVlLXN0b3JleSBFYXN0IEFzaWEgTWFuc2lvbiBzdG9yZSwgeW91IHdpbGwgYmUgZXhwbG9yaW5nIGEgY29mZmVlIGpvdXJuZXkgd2l0aCB1cy4gQXMgeW91IGFwcHJvYWNoIHRoZSBmaXJzdCBmbG9vciwgeW91IHdpbGwgYmUgYWJsZSB0byBzZWUgYW4gYXJ0IHBpZWNlIGluc3BpcmVkIGJ5IGNvZmZlZSBqb3VybmV5LiBBcnJpdmluZyB0byBvdXIgc2Vjb25kIGZsb29yLCB5b3Ugd2lsbCBkaXNjb3ZlciB0aGUgU3RhcmJ1Y2tzIFJvYXN0IFNwZWN0cnVtIGFuZCBzdGFydCBpbnRlcmFjdGluZyBjbG9zZWx5IHdpdGggb3VyIENvZmZlZSBNYXN0ZXIgYXQgQ29mZmVlIFdvcmtzaG9wLjwvcD4NCjwvZGl2Pg0KDQo8ZGl2IGNsYXNzPSJjaGVlci1wYXJ0eS1kZXRhaWwiPg0KPGgzIGNsYXNzPSJjaGVlci1wYXJ0eS10aXRsZS00IGhvbWUtaW50cm8iPjx1PjxiPkxhdHRlIEFydCBXb3Jrc2hvcDwvYj48L3U+PC9oMz4NCg0KPHAgY2xhc3M9ImhvbWUtaW50cm8iPk91ciBDb2ZmZWUgTWFzdGVycyB3aWxsIGludHJvZHVjZSB0aGUgYmFzaWNzIG9mIEVzcHJlc3NvIGFsb25nIHdpdGggc3RlYW1pbmcgdGhlIHBlcmZlY3QgbWlsay4gVGhpcyB3aWxsIGJlIGNvbnRpbnVlZCBieSB0aGUgZGVtb25zdHJhdGlvbiBvZiBwb3VyaW5nIGRlbnNlLCBmb2FtZWQgbWlsayBpbnRvIHNob3RzIG9mIGVzcHJlc3NvIGFzIGVzcHJlc3NvIGJldmVyYWdlcy4gTGFzdGx5LCB5b3Ugd2lsbCBoYXZlIHRoZSBvcHBvcnR1bml0eSB0byBwcmFjdGljZSB0aGUgc2tpbGxzIG9mIG1ha2luZyBsYXR0ZSBhcnQuPC9wPg0KPC9kaXY+DQoNCjxkaXYgY2xhc3M9ImNoZWVyLXBhcnR5LWRldGFpbCI+DQo8aDMgY2xhc3M9ImNoZWVyLXBhcnR5LXRpdGxlLTQgaG9tZS1pbnRybyI+PHU+PGI+Q29sbGVjdCBMaW1pdGVkIEdpZnRzPC9iPjwvdT48L2gzPg0KDQo8cCBjbGFzcz0iaG9tZS1pbnRybyI+Sm9pbiBvdXIgY29mZmVlIHdvcmtzaG9wcyBhbmQgY29sbGVjdCB0YWlsb3ItbWFkZSBnaWZ0cyB0byBtYXJrIHlvdXIgY29mZmVlIGpvdXJuZXkuPC9wPg0KPC9kaXY+DQpkAgcPFgIfCQU1YmFja2dyb3VuZC1pbWFnZTogdXJsKCdGaWxlcy9Db2ZmZWVXb3Jrc2hvcC9iZy5wbmcnKTsWAgIFDxYCHwIFhRU8b2wgY2xhc3M9ImNvbnRlbnQiPg0KCTxsaT5SZWdpc3RyYXRpb24gaXMgb24gYSBmaXJzdC1jb21lLWZpcnN0LXNlcnZlZCBiYXNpcyBhbmQgc3ViamVjdCB0byBhdmFpbGFiaWxpdHkuPC9saT4NCgk8bGk+UGFydGljaXBhbnRzIG9mIHdvcmtzaG9wIG11c3QgYmUgMTUgeWVhcnMgb2xkIG9yIGFib3ZlLjwvbGk+DQoJPGxpPlBheW1lbnQgbXVzdCBiZSBtYWRlIG9ubGluZSB3aXRoIHJlZ2lzdGVyZWQgU3RhcmJ1Y2tzIENhcmQsIFZJU0Egb3IgTWFzdGVyY2FyZC4gRWFjaCBzdWNjZXNzZnVsIGFwcGxpY2FudCB3aG8gcGF5IHdpdGggcmVnaXN0ZXJlZCBTdGFyYnVja3MgQ2FyZCBpcyBlbGlnaWJsZSBmb3IgY29sbGVjdGluZyAxMCBCb251cyBTdGFycy4gQm9udXMgU3RhcnMgd2lsbCBiZSBhZGRlZCBpbnRvIHBhcnRpY2lwYW50J3MgU3RhcmJ1Y2tzIFJld2FyZHPihKIgYWNjb3VudCB3aXRoaW4gb25lIHdlZWsgYWZ0ZXIgd29ya3Nob3AuIEhvd2V2ZXIsIHJlZ2lzdHJhdGlvbiBmZWUgbWFkZSB3aXRoIHJlZ2lzdGVyZWQgU3RhcmJ1Y2tzIENhcmQgaXMgbm90IGVsaWdpYmxlIGZvciBjb2xsZWN0aW5nIFN0YXJzLjwvbGk+DQoJPGxpPlN1Y2Nlc3NmdWwgYXBwbGljYW50IHdpbGwgcmVjZWl2ZSBhIGNvbmZpcm1hdGlvbiBlbWFpbCB3aXRoaW4gMjQgaG91cnMgYWZ0ZXIgYXBwbGljYXRpb24uPC9saT4NCgk8bGk+UGFydGljaXBhbnRzIG11c3QgcHJlc2VudCB0aGlzIGVtYWlswqBmb3IgZXZlbnQgY2hlY2staW4uIEVhY2ggZW1haWwgY2FuIG9ubHkgYmUgdXNlZCBmb3Igb25lIHBhdGljaXBhbnQgZW50cnkuPC9saT4NCgk8bGk+Rm9yIOKAnEhhbmQgQnJld2luZyBXb3Jrc2hvcOKAnSwgcmVnaXN0cmF0aW9uIGZlZSBpcyBIS0QkNDk1IHBlciBwZXJzb24uIEVhY2ggc3VjY2Vzc2Z1bCByZWdpc3RyYXRpb24gaXMgZW50aXRsZWQgdG8gZW50cnkgZm9yIDEgcGFydGljaXBhbnQsIGFuIGV4Y2x1c2l2ZSBjb2ZmZWUgd29ya3Nob3AgZ2lmdC48L2xpPg0KCTxsaT5Gb3Ig4oCcTGF0dGUgQXJ0IFdvcmtzaG9w4oCdLCByZWdpc3RyYXRpb24gZmVlIGlzIEhLRCQ0OTUgcGVyIHBlcnNvbi4gRWFjaCBzdWNjZXNzZnVsIHJlZ2lzdHJhdGlvbiBpcyBlbnRpdGxlZCB0byBlbnRyeSBmb3IgMSBwYXJ0aWNpcGFudCwgYW4gZXhjbHVzaXZlIGNvZmZlZSB3b3Jrc2hvcCBnaWZ0LjwvbGk+DQoJPGxpPlBsZWFzZSBhcnJpdmUgMTAgbWludXRlcyBiZWZvcmUgY2xhc3Mgc3RhcnRzLjwvbGk+DQoJPGxpPkNvZmZlZSB3b3Jrc2hvcCBpcyBjb25kdWN0ZWQgaW4gQ2FudG9uZXNlLjwvbGk+DQoJPGxpPkluIGNhc2Ugb2YgVHlwaG9vbiBTaWduYWwgTm8uIDggb3IgQmxhY2sgUmFpbiwgYWxsIGNsYXNzZXMgd2lsbCBiZSBwb3N0cG9uZWQgdW50aWwgZnVydGhlciBub3RpY2UgYnkgcGhvbmUgb3IgZW1haWwuIElmIHRoZSBUeXBob29uIE5vLiA4IG9yIEJsYWNrIFJhaW4gd2FybmluZyBpcyBsaWZ0ZWQgdHdvIGhvdXJzIGJlZm9yZSB0aGUgY29tbWVuY2VtZW50IG9mIHRoZSBjbGFzc2VzLCBhbGwgb2YgdGhlbSB3aWxsIGJlIGNvbmR1Y3RlZCBhcyBzY2hlZHVsZWQuPC9saT4NCgk8bGk+Tm8gdmlkZW8gYW5kIGF1ZGlvIHJlY29yZGluZyBpcyBhbGxvd2VkIGJ5IHBhcnRpY2lwYW50cyBkdXJpbmcgd29ya3Nob3AuPC9saT4NCgk8bGk+UGhvdG9zIGFuZCB2aWRlb3MgdGFrZW4gZHVyaW5nIHdvcmtzaG9wIG1heSBiZSB1c2VkIGZvciBwdWJsaWNpdHkgYW5kIHByb21vdGlvbiBwdXJwb3Nlcy48L2xpPg0KCTxsaT5BZnRlciBzdWNjZXNzZnVsIGFwcGxpY2F0aW9uLCBwYXJ0aWNpcGFudHMgY2Fubm90IGNoYW5nZSBvciBjYW5jZWwgdGhlIGNob3NlbiB3b3Jrc2hvcCBzZXNzaW9uIGFuZCB0aW1lc2xvdC48L2xpPg0KCTxsaT5QYXltZW50IG1hZGUgaXMgbm9uLXJlZnVuZGFibGUsIG5vbi10cmFuc2ZlcnJhYmxlIGFuZCBjYW5ub3QgYmUgZXhjaGFuZ2VkIGZvciBhbnkgb3RoZXIgZ29vZHMgb3Igc2VydmljZXMuPC9saT4NCgk8bGk+UGVyc29uKHMpIHdobyBoYXZlIG5vdCBlbnJvbGxlZCBpbiB0aGUgY291cnNlIGFyZSBub3QgYWxsb3dlZCB0byBzdGF5IGluIHRoZSBjbGFzcy4gT3RoZXJ3aXNlLCB0aGUgcGVyc29uKHMpIHdpbGwgYmUgYXNrZWQgdG8gbGVhdmUgb3IgYmUgY2hhcmdlZCB0aGUgZnVsbCBwcmljZSBvZiB0aGUgY2xhc3MuPC9saT4NCgk8bGk+Q29mZmVlIENvbmNlcHRzIChISykgTHRkLiBpcyBub3QgcmVzcG9uc2libGUgZm9yIGFueSBkZWF0aCwgaW5qdXJ5IG9yIGxvc3Mgb2YgcHJvcGVydHkgdG8gYW55IHBlcnNvbiBzdWZmZXJlZCBkdXJpbmcgdGhlIHdvcmtzaG9wIGZvciBhbnkgcmVhc29uIHdoYXRzb2V2ZXIuPC9saT4NCgk8bGk+Q29mZmVlIENvbmNlcHRzIChISykgTHRkLiByZXNlcnZlcyB0aGUgcmlnaHQgdG8gY2hhbmdlIG9yIGNhbmNlbCB0aGUgd29ya3Nob3AuIFByaW9yIG5vdGljZSBzaGFsbCBiZSBtYWRlIDI0IGhvdXJzIGluIGFkdmFuY2UgdmlhIGVtYWlsLjwvbGk+DQoJPGxpPkNvZmZlZSBDb25jZXB0cyAoSEspIEx0ZC4gaGFzIHRoZSByaWdodCB0byBhbWVuZCBhbnkgVGVybXMgYW5kIENvbmRpdGlvbnMgd2l0aG91dCBhbnkgcHJpb3Igbm90aWNlLiBJbiBjYXNlIG9mIGFueSBkaXNwdXRlLCB0aGUgZGVjaXNpb24gb2YgQ29mZmVlIENvbmNlcHRzIChISykgTHRkLiBzaGFsbCBiZSBmaW5hbC48L2xpPg0KPC9vbD4NCmQCBA8PFgIeF0VuYWJsZUFqYXhTa2luUmVuZGVyaW5naGRkZGx2rwlJIONuUpJlUqTl70yeEtnp70n6+/PK8J1uOF0p"> 
+   </div> 
+   <script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script> 
+   <script src="/WebResource.axd?d=9iXl9KD9KrRcbpu5MTEHAhXsdFixHsEdKuxgAfrpm5jTRTibOonxzvhLcrvtHBv8VqWdRFm_ncOew-3Do_wvShXFRJ6DcGCMR3Thvkl3C5s1&amp;t=637322205772739184" type="text/javascript"></script> 
+   <script src="/Telerik.Web.UI.WebResource.axd?_TSM_HiddenField_=RadScriptManager_TSM&amp;compress=1&amp;_TSM_CombinedScripts_=%3b%3bSystem.Web.Extensions%2c+Version%3d4.0.0.0%2c+Culture%3dneutral%2c+PublicKeyToken%3d31bf3856ad364e35%3aen-US%3abc17b1ef-7a1b-49cb-a795-5f1c64597a53%3aea597d4b%3ab25378d2%3bTelerik.Web.UI%2c+Version%3d2011.3.1305.40%2c+Culture%3dneutral%2c+PublicKeyToken%3d121fae78165ba3d4%3aen-US%3a8cba3cb6-b29d-4c9f-be22-7b43626a420a%3a16e4e7cd%3af7645509%3aed16cbdc" type="text/javascript"></script> 
+   <script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script> 
+   <div class="aspNetHidden"> 
+    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="82E30827"> 
+    <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAA8FoPLrbTYXkpQKxrZKqB88cWyulX229hwZYOHkxP1ifwrJ+JgFnEBFVpqzabnCM+JE9NJCngNkLnI0syt9d89hWtqqLRwsfaq0wV3ijqNpv+fCMdGclQKN6kXoQ0MnJ5GkyleXHZWV0+MC8iSqA+GUP1IlKPO0BthbilSdpcRuZtXNkaAGFSd5kxFx/uucKJVDY9LK2wWIE5n3/x3TjnFUtJ9WRroqnY2w6lYoHtvEacWVScqT+NrqkfnFoQC9qh5C9jLt/zvYjMKhXDJTSCrNRpJa0fhtcC6kEPwlbI8WMuF56nJO4TipafcA0ZywV+2HmUKm6an98hOP6YI21XF5oXjbDuD4H2QvoBdd73ZPnw=="> 
+   </div> 
+   <input name="__RequestVerificationToken" type="hidden" value="A7Iu_LHTFVR4VZ08kyop-nFDE_3FWYQm1X7Yhd29F0Tlt9k-wzzO2z_FSqwYkQrCYCFTzl2CJ8nZCUtvyV-aIyS7vSG-BYGxIDC5ywoCiXIIQ8_Nr89BMctTQCcPYd7Vy5PcuhrL_TVt7baaPJad765390GRljTvWYLXmxYZUN01"> 
+   <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$RadScriptManager', 'form1', [], [], [], 90, 'ctl00');
+//]]>
+</script> 
+   <script type="text/javascript">
+            // Resources
+            Resources.Server.WebServiceUrl = '';
+        </script> <!-- ----------------------------------- Header  ----------------------------------- --> 
+   <header id="navbar" class="navbar" role="navigation"> 
+    <div class="container"> <!-- Brand and toggle get grouped for better mobile display --> 
+     <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <i class="icon-cancel"></i> </button> <a class="navbar-brand" href="http://www.starbucks.com.hk/"> <img src="/workshop/img/general/logo_starbucks_mobile.png"> </a> 
+     </div> <!-- Collect the nav links, forms, and other content for toggling --> 
+     <div class="collapse navbar-collapse text-uppercase" id="bs-example-navbar-collapse-1"> 
+      <ul class="nav navbar-nav text-uppercase"> 
+       <li> <a id="CphHeader_Header_RptMainMenu_BtnTitle_0" href="#" class="navbar-toggle" data-toggle="collapse" aria-expanded="true" data-target="#CphHeader_Header_RptMainMenu_SubMenu_0">Starbucks<sup>®</sup> Coffee Workshop</a> 
+        <ul id="CphHeader_Header_RptMainMenu_SubMenu_0" class="nav collapse in" role="menu" aria-labelledby="CphHeader_Header_RptMainMenu_BtnTitle_0" aria-expanded="true"> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnHome_0" href="/eventandworkshop/home.aspx?alias=coffeeworkshop">Home</a> </li> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnDetail_0" href="/eventandworkshop/home.aspx?alias=coffeeworkshop#more">DETAILS</a> </li> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnTnC_0" href="/eventandworkshop/home.aspx?alias=coffeeworkshop#tnc">T&amp;C</a> </li> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnRegister_0" href="/eventandworkshop/registration.aspx?alias=coffeeworkshop">REGISTRATION</a> </li> 
+        </ul> </li> 
+       <li> <a id="CphHeader_Header_RptMainMenu_BtnTitle_1" href="#" class="navbar-toggle" data-toggle="collapse" aria-expanded="false" data-target="#CphHeader_Header_RptMainMenu_SubMenu_1">Coffee and Food Tasting Workshop</a> 
+        <ul id="CphHeader_Header_RptMainMenu_SubMenu_1" class="nav collapse" role="menu" aria-labelledby="CphHeader_Header_RptMainMenu_BtnTitle_1"> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnHome_1" href="/eventandworkshop/home.aspx?alias=lg3-coffee-and-food-tasting-workshop">Home</a> </li> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnDetail_1" href="/eventandworkshop/home.aspx?alias=lg3-coffee-and-food-tasting-workshop#more">DETAILS</a> </li> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnTnC_1" href="/eventandworkshop/home.aspx?alias=lg3-coffee-and-food-tasting-workshop#tnc">T&amp;C</a> </li> 
+         <li> <a id="CphHeader_Header_RptMainMenu_BtnRegister_1" href="/eventandworkshop/registration.aspx?alias=lg3-coffee-and-food-tasting-workshop">REGISTRATION</a> </li> 
+        </ul> </li> 
+      </ul> 
+      <ul class="nav navbar-nav navbar-right text-warning"> 
+       <li> <a id="CphHeader_Header_BtnSignIn" href="/eventandworkshop/signin.aspx?alias=coffeeworkshop">LOGIN<span class="visible-xs-inline"></span></a> <a id="CphHeader_Header_BtnChangeLanguage" href="javascript:__doPostBack('ctl00$CphHeader$Header$BtnChangeLanguage','')"> <span class="visible-xs-inline"></span>中文<span class="visible-xs-inline"> &gt;</span> </a> </li> 
+      </ul> 
+     </div><!-- /.navbar-collapse --> 
+    </div><!-- /.container-fluid --> 
+   </header> <!-- --------------------------------- Header  END --------------------------------- --> <!-- ----------------------------------- Content ----------------------------------- --> 
+   <div class="" id="content"> 
+    <div id="banner" class="banner" style="background-image: url('Files/CoffeeWorkshop/banner.png');"></div> 
+    <div id="workshop" class="cheer-party" style="background-image: url('Files/CoffeeWorkshop/bg.png');"> 
+     <div class="cheer-party-title text-uppercase">
+      Exploring Coffee With Us
+      <br> &nbsp;
+     </div> Latte Art Workshop 
+     <ul class="col-sm-6"> 
+      <li><span>What is Espresso?</span></li> 
+      <li><span>Steaming The Perfect Milk</span></li> 
+      <li><span>Crafting Espresso Beverages</span></li> 
+      <li><span>Practicing Latte Art</span></li> 
+     </ul> 
+     <div class="gold-level center-block"> 
+      <div class="gold-level-tb"> 
+       <ul class="row"> 
+        <li class="col-xs-3"> DATES </li> 
+        <li class="col-xs-9">Latte Art Workshop<br> (every Mon and Tue)</li> 
+       </ul> 
+       <ul id="CphMain_TimeRow" class="row"> 
+        <li class="col-xs-3"> TIME </li> 
+        <li class="col-xs-9">19:00 – 21:00</li> 
+       </ul> 
+       <ul class="row"> 
+        <li class="col-xs-3"> VENUE </li> 
+        <li class="col-xs-9">East Asia Mansion Starbucks Store, 2/F, 27-29 Hennessy Road, Wan Chai</li> 
+       </ul> 
+       <ul class="row"> 
+        <li class="col-xs-3"> PRICE </li> 
+        <li class="col-xs-9">$495 per head</li> 
+       </ul> 
+      </div> 
+     </div> 
+     <p class="home-intro"> *This workshop is conducted in Cantonese </p> 
+     <div class="text-center"> <a id="CphMain_BtnRegisterNow1" class="btn btn-default" href="javascript:__doPostBack('ctl00$CphMain$BtnRegisterNow1','')">Register Now</a> 
+     </div> 
+    </div> 
+    <div id="more" class="cheer-party-more" style="background-image: url('Files/CoffeeWorkshop/bg_img_web.jpg');"> 
+     <div class="container"> 
+      <div class="font-white"> 
+       <div class="cheer-party-detail"> 
+        <h3 class="cheer-party-title-2 home-intro"><u><b>Share What We Love by Our Coffee Master</b></u></h3> 
+       </div> 
+       <div class="cheer-party-detail"> 
+        <p class="home-intro">All coffee workshops will be hosted by our professional Coffee Masters in black apron. Every Coffee Master has to complete a series of coffee knowledge and practical certifications to receive their black apron. Our Coffee Masters are delighted to have the opportunity to share their love and passion to you about coffee.</p> 
+       </div> 
+       <div class="cheer-party-detail"> 
+        <h3 class="cheer-party-title-2 home-intro"><u><b>East Asia Mansion Starbucks – The Start of Coffee Journey</b></u></h3> 
+        <p class="home-intro">When you are visiting our three-storey East Asia Mansion store, you will be exploring a coffee journey with us. As you approach the first floor, you will be able to see an art piece inspired by coffee journey. Arriving to our second floor, you will discover the Starbucks Roast Spectrum and start interacting closely with our Coffee Master at Coffee Workshop.</p> 
+       </div> 
+       <div class="cheer-party-detail"> 
+        <h3 class="cheer-party-title-4 home-intro"><u><b>Latte Art Workshop</b></u></h3> 
+        <p class="home-intro">Our Coffee Masters will introduce the basics of Espresso along with steaming the perfect milk. This will be continued by the demonstration of pouring dense, foamed milk into shots of espresso as espresso beverages. Lastly, you will have the opportunity to practice the skills of making latte art.</p> 
+       </div> 
+       <div class="cheer-party-detail"> 
+        <h3 class="cheer-party-title-4 home-intro"><u><b>Collect Limited Gifts</b></u></h3> 
+        <p class="home-intro">Join our coffee workshops and collect tailor-made gifts to mark your coffee journey.</p> 
+       </div> 
+      </div> 
+      <div class="text-center"> <a id="CphMain_BtnRegisterNow2" class="btn btn-default font-white" href="javascript:__doPostBack('ctl00$CphMain$BtnRegisterNow2','')">Register Now</a> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="tnc" class="tc" style="background-image: url('Files/CoffeeWorkshop/bg.png');"> 
+     <div class="container"> 
+      <div class="clearfix"> 
+       <h1 class="text-uppercase">TERMS &amp; CONDITIONS</h1> <a class="btn btn-default" data-toggle="collapse" data-parent="#tc" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Read More</a> 
+      </div> 
+      <div id="collapseOne" class="tc-list collapse" role="tabpanel" aria-labelledby="headingOne"> 
+       <ol class="content"> 
+        <li>Registration is on a first-come-first-served basis and subject to availability.</li> 
+        <li>Participants of workshop must be 15 years old or above.</li> 
+        <li>Payment must be made online with registered Starbucks Card, VISA or Mastercard. Each successful applicant who pay with registered Starbucks Card is eligible for collecting 10 Bonus Stars. Bonus Stars will be added into participant's Starbucks Rewards™ account within one week after workshop. However, registration fee made with registered Starbucks Card is not eligible for collecting Stars.</li> 
+        <li>Successful applicant will receive a confirmation email within 24 hours after application.</li> 
+        <li>Participants must present this email&nbsp;for event check-in. Each email can only be used for one paticipant entry.</li> 
+        <li>For “Hand Brewing Workshop”, registration fee is HKD$495 per person. Each successful registration is entitled to entry for 1 participant, an exclusive coffee workshop gift.</li> 
+        <li>For “Latte Art Workshop”, registration fee is HKD$495 per person. Each successful registration is entitled to entry for 1 participant, an exclusive coffee workshop gift.</li> 
+        <li>Please arrive 10 minutes before class starts.</li> 
+        <li>Coffee workshop is conducted in Cantonese.</li> 
+        <li>In case of Typhoon Signal No. 8 or Black Rain, all classes will be postponed until further notice by phone or email. If the Typhoon No. 8 or Black Rain warning is lifted two hours before the commencement of the classes, all of them will be conducted as scheduled.</li> 
+        <li>No video and audio recording is allowed by participants during workshop.</li> 
+        <li>Photos and videos taken during workshop may be used for publicity and promotion purposes.</li> 
+        <li>After successful application, participants cannot change or cancel the chosen workshop session and timeslot.</li> 
+        <li>Payment made is non-refundable, non-transferrable and cannot be exchanged for any other goods or services.</li> 
+        <li>Person(s) who have not enrolled in the course are not allowed to stay in the class. Otherwise, the person(s) will be asked to leave or be charged the full price of the class.</li> 
+        <li>Coffee Concepts (HK) Ltd. is not responsible for any death, injury or loss of property to any person suffered during the workshop for any reason whatsoever.</li> 
+        <li>Coffee Concepts (HK) Ltd. reserves the right to change or cancel the workshop. Prior notice shall be made 24 hours in advance via email.</li> 
+        <li>Coffee Concepts (HK) Ltd. has the right to amend any Terms and Conditions without any prior notice. In case of any dispute, the decision of Coffee Concepts (HK) Ltd. shall be final.</li> 
+       </ol> <i class="center-block icon-close" data-toggle="collapse" data-parent="#tc" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src="img/general/"></i> 
+      </div> 
+     </div> 
+    </div> 
+   </div><!-- end .container --> <!-- --------------------------------- Content  END --------------------------------- --> <!-- ------------------------------------ Footer  ----------------------------------- --> 
+   <footer> 
+    <p class="container text-center content font-white"> Need Help?<br> Email us at <a href="mailto:info@coffee-concepts.com">info@coffee-concepts.com</a> </p> 
+   </footer> <!-- ---------------------------------- Footer  END --------------------------------- --> 
+   <div id="RadAjaxLoadingPanel" class="RadAjax RadAjax_Vista" style="display:none;"> 
+    <div class="raDiv"> 
+    </div>
+    <div class="raColor raTransp"> 
+    </div> 
+   </div> 
+   <script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadAjaxLoadingPanel, {"initialDelayTime":0,"isSticky":false,"minDisplayTime":0,"skin":"Vista","transparency":0,"uniqueID":"ctl00$RadAjaxLoadingPanel","zIndex":90000}, null, null, $get("RadAjaxLoadingPanel"));
+});
+//]]>
+</script> 
+  </form>  
+ </body>
+</html>

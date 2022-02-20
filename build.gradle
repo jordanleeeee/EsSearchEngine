@@ -1,0 +1,29 @@
+apply from: file("${rootDir}/gradle/project.gradle")
+
+subprojects {
+
+    repositories {
+        maven {
+            url 'https://neowu.github.io/maven-repo/'
+            content {
+                includeGroupByRegex 'core\\.framework.*'
+            }
+        }
+    }
+
+}
+
+def coreNGVersion = '7.10.1'
+def mysqlVersion = '8.0.27'
+def jacksonVersion = '2.12.5'
+
+
+configure([project('indexing')]) {
+    dependencies {
+        implementation "core.framework:core-ng:${coreNGVersion}"
+
+        implementation group: 'org.jsoup', name: 'jsoup', version: '1.14.2'
+        implementation group: 'org.json', name: 'json', version: '20210307'
+        implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.17.2'
+    }
+}

@@ -1,0 +1,42 @@
+{
+  "settings": {
+    "index": {
+      "number_of_shards": "3",
+      "number_of_replicas": "0"
+    }
+  },
+  "mappings": {
+    "properties": {
+      "links": {
+        "type": "keyword",
+        "index": "false"
+      },
+      "size": {
+        "type": "long"
+      },
+      "title": {
+        "type": "text"
+      },
+      "url": {
+        "type": "keyword",
+        "index": "false"
+      },
+      "body": {
+        "properties": {
+          "content": {
+            "type": "text"
+          },
+          "h1": {
+            "type": "text"
+          },
+          "h2": {
+            "type": "text"
+          }
+        }
+      },
+      "tags": {
+        "type": "keyword"
+      }
+    }
+  }
+}
