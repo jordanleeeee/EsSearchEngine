@@ -1,5 +1,6 @@
 import es.IndexingManager;
 import es.domain.WebContent;
+import util.WebBrowser;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -23,7 +24,8 @@ public class Spider {
         return url.startsWith(targetedSite);
     }
 
-    public void BFS(String siteName, String url, int limit) {
+    public void BFS(String url, int limit, boolean jsRenderingEnabled) {
+        String siteName = url.substring(url.indexOf("www.") + 4, url.indexOf(".com"));
         Queue<String> queue = new LinkedList<>();
         Set<String> visitedSite = new HashSet<>();
         queue.add(url);
@@ -37,7 +39,7 @@ public class Spider {
             if (visitedSite.contains(nextUrl)) continue;
             visitedSite.add(nextUrl);
             if (!isTargetedSite(siteName, nextUrl, url)) continue;
-            Optional<WebContent> webContentOptional = parser.getContentOfPage(siteName, nextUrl, url);
+            Optional<WebContent> webContentOptional = parser.getContentOfPage(siteName, nextUrl, url, jsRenderingEnabled);
             if (webContentOptional.isEmpty()) continue;
             WebContent webContent = webContentOptional.get();
             indexingService.index(siteName, webContent);
@@ -48,8 +50,9 @@ public class Spider {
 
     public static void main(String[] args) {
         Spider spider = new Spider();
-        spider.BFS("mcdonalds", "https://www.mcdonalds.com.hk/en", 1000);
-        spider.BFS("starbucks", "https://www.starbucks.com.hk", 1000);
-        spider.BFS("subway", "https://www.subway.com.hk", 1000);
+        spider.BFS("https://www.mcdonalds.com.hk/en", 10, true);
+        spider.BFS("https://www.starbucks.com.hk", 10, true);
+//        spider.BFS("https://www.subway.com.hk", 1000, false);
+        WebBrowser.getInstance().closeBrowser();
     }
 }
