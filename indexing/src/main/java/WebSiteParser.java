@@ -46,7 +46,7 @@ public class WebSiteParser {
             content.size = htmlDoc.body().text().getBytes().length;
             content.body = WebsiteUtils.getPageBody(htmlDoc);
             content.links = WebsiteUtils.getLinkOfPage(baseUrl, htmlDoc);
-            content.updatedTime = SitemapManager.getInstance().getSiteModificationTime(url);
+            content.updatedTime = WebsiteUtils.getLastModificationTime(url, htmlDoc);
             content.tags.addAll(StringUtils.getTags(content.title));
             content.tags.addAll(StringUtils.getTags(content.body.h1));
             content.tags.addAll(StringUtils.getTags(content.body.h2));

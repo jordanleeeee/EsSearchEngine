@@ -1,10 +1,11 @@
+package util;
+
 import core.framework.http.HTTPClient;
 import core.framework.http.HTTPMethod;
 import core.framework.http.HTTPRequest;
 import core.framework.util.Strings;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import util.FileUtils;
 
 import javax.annotation.Nullable;
 import java.time.ZoneId;

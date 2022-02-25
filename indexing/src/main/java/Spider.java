@@ -1,5 +1,6 @@
 import es.IndexingManager;
 import es.domain.WebContent;
+import util.SitemapManager;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -34,9 +35,7 @@ public class Spider {
         while (!queue.isEmpty()) {
             String nextUrl = queue.poll();
             if (visitedSite.size() > limit) break;
-            if (nextUrl.endsWith("/") || nextUrl.endsWith("?")) {
-                nextUrl = nextUrl.substring(0, nextUrl.length() - 1);
-            }
+            nextUrl = simplifyUrl(nextUrl);
             if (visitedSite.contains(nextUrl)) continue;
             visitedSite.add(nextUrl);
             if (!isTargetedSite(siteName, nextUrl, url)) continue;
@@ -48,5 +47,13 @@ public class Spider {
         }
         indexingService.flushBulkRequest();
         sitemapManager.clearSiteMap();
+    }
+
+    private String simplifyUrl(String nextUrl) {
+        if (nextUrl.endsWith("/") || nextUrl.endsWith("?")) {
+            nextUrl = nextUrl.substring(0, nextUrl.length() - 1);
+        }
+        nextUrl = nextUrl.replace(":443", "");
+        return nextUrl;
     }
 }

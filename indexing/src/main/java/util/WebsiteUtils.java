@@ -4,6 +4,9 @@ import es.domain.WebContent;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import javax.annotation.Nullable;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +39,19 @@ public class WebsiteUtils {
         }
         body.content = htmlDoc.body().text();
         return body;
+    }
+
+    @Nullable
+    public static ZonedDateTime getLastModificationTime(String url, Document htmlDoc){
+        ZonedDateTime time = SitemapManager.getInstance().getSiteModificationTime(url);
+        if (time == null) {
+            for (Element meta : htmlDoc.getElementsByTag("meta")) {
+                if (meta.attr("property").equals("article:modified_time")) {
+                    String timeString = meta.attr("content");
+                    time = ZonedDateTime.parse(timeString).withZoneSameInstant(ZoneId.of("UTC"));
+                }
+            }
+        }
+        return time;
     }
 }
