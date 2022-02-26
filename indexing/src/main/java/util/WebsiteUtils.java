@@ -1,5 +1,6 @@
 package util;
 
+import core.framework.crypto.Hash;
 import es.domain.WebContent;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -53,5 +54,18 @@ public class WebsiteUtils {
             }
         }
         return time;
+    }
+
+
+    public static String simplifyUrl(String url) {
+        if (url.endsWith("/") || url.endsWith("?")) {
+            url = url.substring(0, url.length() - 1);
+        }
+        url = url.replace(":443", "");
+        return url;
+    }
+
+    public static String getUrlId(String url) {
+        return Hash.sha1Hex(url).substring(20);
     }
 }

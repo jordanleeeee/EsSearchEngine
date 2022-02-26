@@ -37,6 +37,10 @@ public class WebContent {
     @Property(name = "tags")
     public List<String> tags = new ArrayList<>();
 
+    @NotNull
+    @Property(name = "pageRank")
+    public Double pageRank = 1.0;
+
     public static class Body {
         @NotNull
         @Property(name = "h1")

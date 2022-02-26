@@ -39,6 +39,9 @@
       "links": {
         "type": "keyword",
         "index": "false"
+      },
+      "pagerank": {
+        "type": "rank_feature"
       }
     }
   }

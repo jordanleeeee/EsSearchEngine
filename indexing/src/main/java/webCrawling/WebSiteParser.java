@@ -1,4 +1,5 @@
-import core.framework.crypto.Hash;
+package webCrawling;
+
 import core.framework.util.Strings;
 import es.domain.WebContent;
 import org.jsoup.Jsoup;
@@ -36,14 +37,14 @@ public class WebSiteParser {
     public Optional<WebContent> getContentOfPage(String siteName, String url, String baseUrl, boolean jsRenderingEnabled) {
         System.out.println("extract content from: " + url);
 
-        String cachePath = Strings.format("site/{}/{}", siteName, Hash.sha1Hex(url).substring(20));
+        String cachePath = Strings.format("site/{}/{}", siteName, WebsiteUtils.getUrlId(url));
         return getHtmlDoc(url, cachePath, jsRenderingEnabled).flatMap(html -> {
             Document htmlDoc = Jsoup.parse(html);
 
             WebContent content = new WebContent();
             content.url = url;
             content.title = htmlDoc.title();
-            content.size = htmlDoc.body().text().getBytes().length;
+            content.size = htmlDoc.html().getBytes().length;
             content.body = WebsiteUtils.getPageBody(htmlDoc);
             content.links = WebsiteUtils.getLinkOfPage(baseUrl, htmlDoc);
             content.updatedTime = WebsiteUtils.getLastModificationTime(url, htmlDoc);
