@@ -10,9 +10,9 @@ import core.framework.util.ClasspathResources;
  * @author Jordan
  */
 public class UpdateIndexStructure {
-    private static final HTTPClient client = HTTPClient.builder().build();
-
     public static void main(String[] args) {
+        HTTPClient client = HTTPClient.builder().build();
+
         HTTPRequest deleteIndexRequest = new HTTPRequest(HTTPMethod.DELETE, "http://127.0.0.1:9200/mcdonalds");
         System.out.println(client.execute(deleteIndexRequest).text());
 

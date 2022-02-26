@@ -19,11 +19,15 @@ import java.util.List;
 /**
  * @author Jordan
  */
-public class IndexingManager {
-    private static final IndexingManager manager = new IndexingManager();
+public final class IndexingManager {
+    private static final IndexingManager MANAGER = new IndexingManager();
+    private static final int BULK_SIZE = 100;
+    public static IndexingManager getInstance() {
+        return MANAGER;
+    }
+
     private final HTTPClient client;
     private final List<String> bulkIndexRequestBodyLine;
-    private static final int bulkSize = 100;
 
     private IndexingManager() {
         Bean.register(WebContent.class);
@@ -31,10 +35,6 @@ public class IndexingManager {
         Bean.register(BulkUpdateHeader.class);
         client = HTTPClient.builder().build();
         bulkIndexRequestBodyLine = new ArrayList<>();
-    }
-
-    public static IndexingManager getInstance() {
-        return manager;
     }
 
     @Deprecated
@@ -51,11 +51,11 @@ public class IndexingManager {
         var body = new BulkHeaderContent();
         body.index = siteName;
         body.id = WebsiteUtils.getUrlId(webContent.url);
-        req.body = body;
+        req.content = body;
         bulkIndexRequestBodyLine.add(Bean.toJSON(req));
         bulkIndexRequestBodyLine.add(Bean.toJSON(webContent));
 
-        if (bulkIndexRequestBodyLine.size() / 2 > bulkSize) sendBulkRequest();
+        if (bulkIndexRequestBodyLine.size() / 2 > BULK_SIZE) sendBulkRequest();
     }
 
     public void update(String siteName, String id, String updatedFieldAndValue) {
@@ -63,12 +63,12 @@ public class IndexingManager {
         var body = new BulkHeaderContent();
         body.index = siteName;
         body.id = id;
-        req.body = body;
+        req.content = body;
         bulkIndexRequestBodyLine.add(Bean.toJSON(req));
         String updatePart = "{\"doc\": " + updatedFieldAndValue + "}";
         bulkIndexRequestBodyLine.add(updatePart);
 
-        if (bulkIndexRequestBodyLine.size() / 2 > bulkSize) sendBulkRequest();
+        if (bulkIndexRequestBodyLine.size() / 2 > BULK_SIZE) sendBulkRequest();
     }
 
     public void flushBulkRequest() {

@@ -17,17 +17,18 @@ import java.util.Optional;
 /**
  * @author Jordan
  */
-public class SitemapManager {
+public final class SitemapManager {
     private static SitemapManager instance;
-    private final Map<String, ZonedDateTime> sitemap;
-    private final HTTPClient client;
-
     public static SitemapManager getInstance() {
         if (instance == null) {
             instance = new SitemapManager();
         }
         return instance;
     }
+
+    private final Map<String, ZonedDateTime> sitemap;
+    private final HTTPClient client;
+
 
     private SitemapManager() {
         sitemap = new HashMap<>();
@@ -39,7 +40,7 @@ public class SitemapManager {
             String url = urlElement.getElementsByTag("loc").text();
             String time = urlElement.getElementsByTag("lastmod").text();
 
-            if (site.equals("starbucks")) {
+            if ("starbucks".equals(site)) {
                 url = "https://www.starbucks.com.hk" + url;
             } else {
                 url = url.substring(0, url.length() - 1);
@@ -49,19 +50,19 @@ public class SitemapManager {
     }
 
     public void loadSitemap(String site) {
-        String sitemapPath = switch (site) {
-            case "mcdonalds" -> "https://www.mcdonalds.com.hk/page-sitemap.xml";
-            case "subway" -> "https://subway.com.hk/page-sitemap.xml";
-            case "starbucks" -> "https://www.starbucks.com.hk/sitemap.xml";
-            default -> throw new IllegalArgumentException("no sitemap path configuration for " + site);
-        };
-
         String sitemapFile;
         String possibleCacheLocation = Strings.format("sitemap/{}.xml", site);
         Optional<String> sitemapFileOptional = FileUtils.read(possibleCacheLocation);
+
         if (sitemapFileOptional.isPresent()) {
             sitemapFile = sitemapFileOptional.get();
         } else {
+            String sitemapPath = switch (site) {
+                case "mcdonalds" -> "https://www.mcdonalds.com.hk/page-sitemap.xml";
+                case "subway" -> "https://subway.com.hk/page-sitemap.xml";
+                case "starbucks" -> "https://www.starbucks.com.hk/sitemap.xml";
+                default -> throw new IllegalArgumentException("no sitemap path configuration for " + site);
+            };
             sitemapFile = client.execute(new HTTPRequest(HTTPMethod.GET, sitemapPath)).text();
             FileUtils.save(possibleCacheLocation, sitemapFile);
         }

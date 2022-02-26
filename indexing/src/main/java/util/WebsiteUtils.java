@@ -43,7 +43,7 @@ public class WebsiteUtils {
     }
 
     @Nullable
-    public static ZonedDateTime getLastModificationTime(String url, Document htmlDoc){
+    public static ZonedDateTime getLastModificationTime(String url, Document htmlDoc) {
         ZonedDateTime time = SitemapManager.getInstance().getSiteModificationTime(url);
         if (time == null) {
             for (Element meta : htmlDoc.getElementsByTag("meta")) {
@@ -56,13 +56,13 @@ public class WebsiteUtils {
         return time;
     }
 
-
     public static String simplifyUrl(String url) {
-        if (url.endsWith("/") || url.endsWith("?")) {
-            url = url.substring(0, url.length() - 1);
+        String simplifiedUrl = url;
+        if (simplifiedUrl.endsWith("/") || simplifiedUrl.endsWith("?")) {
+            simplifiedUrl = simplifiedUrl.substring(0, simplifiedUrl.length() - 1);
         }
-        url = url.replace(":443", "");
-        return url;
+        simplifiedUrl = simplifiedUrl.replace(":443", "");
+        return simplifiedUrl;
     }
 
     public static String getUrlId(String url) {

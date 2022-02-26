@@ -9,17 +9,17 @@ import java.io.IOException;
 /**
  * @author Jordan
  */
-public class WebBrowser {
+public final class WebBrowser {
     private static WebBrowser webBrowser;
-    private final Playwright playwright;
-    private final Page page;
-
     public static WebBrowser getInstance() {
         if (webBrowser == null) {
             webBrowser = new WebBrowser();
         }
         return webBrowser;
     }
+
+    private final Playwright playwright;
+    private final Page page;
 
     private WebBrowser() {
         playwright = Playwright.create();
@@ -40,5 +40,4 @@ public class WebBrowser {
             throw new IOException(e);
         }
     }
-
 }

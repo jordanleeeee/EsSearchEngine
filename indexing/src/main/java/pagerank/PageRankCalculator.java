@@ -1,12 +1,11 @@
-package pageRank;
+package pagerank;
 
-import es.searchResponse.SearchResponse;
+import es.searchresponse.SearchResponse;
 import util.MatrixUtils;
 import util.WebsiteUtils;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
@@ -36,7 +35,7 @@ public class PageRankCalculator {
 
         int nextIndex = 0;
         for (SearchResponse.HitDetails hitDetail : searchResponse.hits.hitDetails) {
-            pageIdToIndexMap.put(hitDetail._id, nextIndex++);
+            pageIdToIndexMap.put(hitDetail.id, nextIndex++);
         }
 
         // initialize link matrix
@@ -70,7 +69,7 @@ public class PageRankCalculator {
             double[] newPageRankVector = MatrixUtils.vectorTimesMatrix(pageRankVector, pageLinkMatrix);
 
             MatrixUtils.multiplyValueToVector(dampingFactor, newPageRankVector);
-            MatrixUtils.addValueToVector((1 - dampingFactor), newPageRankVector);
+            MatrixUtils.addValueToVector(1 - dampingFactor, newPageRankVector);
             if (normalizationMode == 1 || normalizationMode == 2 && i == iteration - 1) {
                 MatrixUtils.normalizeVector(newPageRankVector);
             }
@@ -80,14 +79,13 @@ public class PageRankCalculator {
     }
 
     public void showSortedPageRankMap(int top) {
-        Map<String, Double> scoreMap = pageIdToIndexMap
+        pageIdToIndexMap
                 .entrySet()
                 .stream()
                 .map(entry -> Map.entry(entry.getKey(), pageRankVector[entry.getValue()]))
                 .sorted((a, b) -> b.getValue().compareTo(a.getValue()))
                 .limit(top)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));
-        System.out.println(scoreMap);
+                .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
     }
 
     public Map<String, Double> getPageRankMap() {
@@ -104,8 +102,7 @@ public class PageRankCalculator {
     private double round(double value) {
         int place = 10;
         long factor = (long) Math.pow(10, place);
-        value = value * factor;
-        long tmp = Math.round(value);
-        return (double) tmp / factor;
+        long temp = Math.round(value * factor);
+        return (double) temp / factor;
     }
 }

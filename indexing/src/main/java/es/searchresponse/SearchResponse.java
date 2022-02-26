@@ -1,4 +1,4 @@
-package es.searchResponse;
+package es.searchresponse;
 
 import core.framework.api.json.Property;
 import core.framework.api.validate.NotNull;
@@ -22,7 +22,7 @@ public class SearchResponse {
     public static class HitDetails {
         @NotNull
         @Property(name = "_id")
-        public String _id;
+        public String id;
 
         @NotNull
         @Property(name = "_source")

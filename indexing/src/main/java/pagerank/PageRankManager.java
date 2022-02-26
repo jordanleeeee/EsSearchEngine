@@ -1,4 +1,4 @@
-package pageRank;
+package pagerank;
 
 import core.framework.http.ContentType;
 import core.framework.http.HTTPClient;
@@ -7,7 +7,7 @@ import core.framework.http.HTTPRequest;
 import core.framework.http.HTTPResponse;
 import core.framework.json.Bean;
 import es.IndexingManager;
-import es.searchResponse.SearchResponse;
+import es.searchresponse.SearchResponse;
 
 import java.util.Map;
 

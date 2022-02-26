@@ -1,4 +1,4 @@
-package webCrawling;
+package webcrawling;
 
 import es.IndexingManager;
 import es.domain.WebContent;
@@ -20,10 +20,10 @@ public class Spider {
     SitemapManager sitemapManager = SitemapManager.getInstance();
 
     private boolean isTargetedSite(String siteName, String url, String targetedSite) {
-        if (siteName.equals("subway")) {
-            return url.contains("www.subway.com.hk") &&
-                    !url.contains("www.subway.com.hk/zh-hant") &&
-                    !url.contains("www.subway.com.hk/zh-hans");
+        if ("subway".equals(siteName)) {
+            return url.contains("www.subway.com.hk")
+                    && !url.contains("www.subway.com.hk/zh-hant")
+                    && !url.contains("www.subway.com.hk/zh-hans");
         }
         return url.startsWith(targetedSite);
     }

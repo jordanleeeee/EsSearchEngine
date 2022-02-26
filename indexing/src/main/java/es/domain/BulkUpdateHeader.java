@@ -7,5 +7,5 @@ import core.framework.api.json.Property;
  */
 public class BulkUpdateHeader {
     @Property(name = "update")
-    public BulkHeaderContent body;
+    public BulkHeaderContent content;
 }

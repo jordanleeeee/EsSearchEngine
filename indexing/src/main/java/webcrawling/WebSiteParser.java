@@ -1,4 +1,4 @@
-package webCrawling;
+package webcrawling;
 
 import core.framework.util.Strings;
 import es.domain.WebContent;

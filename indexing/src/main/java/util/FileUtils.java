@@ -13,14 +13,14 @@ import java.util.Optional;
  * @author Jordan
  */
 public class FileUtils {
-    private static final Logger logger = LoggerFactory.getLogger(FileUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileUtils.class);
 
     public static void save(String path, String content) {
         if (!new File(path).exists()) {
             try (FileWriter fileWriter = new FileWriter(path)) {
                 fileWriter.write(content);
             } catch (IOException e) {
-                logger.error(e.getMessage());
+                LOGGER.error(e.getMessage());
             }
         }
     }

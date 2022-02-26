@@ -1,4 +1,4 @@
-package pageRank;
+package pagerank;
 
 /**
  * @author Jordan

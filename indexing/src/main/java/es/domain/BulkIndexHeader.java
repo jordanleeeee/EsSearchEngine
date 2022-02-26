@@ -7,5 +7,5 @@ import core.framework.api.json.Property;
  */
 public class BulkIndexHeader {
     @Property(name = "index")
-    public BulkHeaderContent body;
+    public BulkHeaderContent content;
 }

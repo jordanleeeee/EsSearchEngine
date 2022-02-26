@@ -1,4 +1,4 @@
-package webCrawling;
+package webcrawling;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;

@@ -1,4 +1,4 @@
-package webCrawling;
+package webcrawling;
 
 import util.WebBrowser;
 

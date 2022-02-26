@@ -38,7 +38,7 @@ public class WebContent {
     public List<String> tags = new ArrayList<>();
 
     @NotNull
-    @Property(name = "pageRank")
+    @Property(name = "pagerank")
     public Double pageRank = 1.0;
 
     public static class Body {
