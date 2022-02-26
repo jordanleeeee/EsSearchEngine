@@ -27,3 +27,12 @@ configure([project('indexing')]) {
         implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.17.2'
     }
 }
+
+configure([project('searching-service')]) {
+    apply from: file("${rootDir}/gradle/app.gradle")
+    dependencies {
+        implementation "core.framework:core-ng:${coreNGVersion}"
+        testImplementation "core.framework:core-ng-test:${coreNGVersion}"
+        testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    }
+}

@@ -1,1 +1,3 @@
 include 'indexing'
+
+include 'searching-service'
