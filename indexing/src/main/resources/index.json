@@ -40,7 +40,7 @@
         "type": "keyword",
         "index": "false"
       },
-      "pagerank": {
+      "pageRank": {
         "type": "rank_feature"
       }
     }

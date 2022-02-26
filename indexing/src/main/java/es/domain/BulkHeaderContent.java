@@ -14,5 +14,4 @@ public class BulkHeaderContent {
     @NotNull
     @Property(name = "_id")
     public String id;
-
 }

@@ -39,7 +39,7 @@ public class PageRankCalculator {
             pageIdToIndexMap.put(hitDetail._id, nextIndex++);
         }
 
-        System.out.println(nextIndex);
+        // initialize link matrix
         pageLinkMatrix = new double[nextIndex][nextIndex];
         for (SearchResponse.HitDetails hitDetail : searchResponse.hits.hitDetails) {
             int parentIdx = getIndexOfUrl(hitDetail.source.url).orElseThrow();
@@ -49,7 +49,9 @@ public class PageRankCalculator {
                 pageLinkMatrix[parentIdx][childIdx.getAsInt()] = 1;
             }
         }
+        MatrixUtils.normalizeMatrixRow(pageLinkMatrix);
 
+        // initialize page rank vector
         pageRankVector = new double[nextIndex];
         Arrays.fill(pageRankVector, 1);
     }
@@ -63,7 +65,6 @@ public class PageRankCalculator {
     }
 
     public void calculatePageRank() {
-        MatrixUtils.normalizeMatrixRow(pageLinkMatrix);
         for (int i = 0; i < iteration; i++) {
             System.out.println(i + " iteration");
             double[] newPageRankVector = MatrixUtils.vectorTimesMatrix(pageRankVector, pageLinkMatrix);
@@ -98,10 +99,10 @@ public class PageRankCalculator {
     }
 
     /**
-     * round to 8 decimal place (at most 9 significant bits for the precision in es rank_feature)
+     * round to 10 decimal place (at most 9 significant bits for the precision in es rank_feature)
      */
     private double round(double value) {
-        int place = 8;
+        int place = 10;
         long factor = (long) Math.pow(10, place);
         value = value * factor;
         long tmp = Math.round(value);
