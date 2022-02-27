@@ -7,9 +7,6 @@ import core.framework.http.HTTPMethod;
 import core.framework.http.HTTPRequest;
 import core.framework.json.Bean;
 import core.framework.util.Strings;
-import es.domain.BulkHeaderContent;
-import es.domain.BulkIndexHeader;
-import es.domain.BulkUpdateHeader;
 import es.domain.WebContent;
 import util.WebsiteUtils;
 
@@ -22,6 +19,7 @@ import java.util.List;
 public final class IndexingManager {
     private static final IndexingManager MANAGER = new IndexingManager();
     private static final int BULK_SIZE = 100;
+
     public static IndexingManager getInstance() {
         return MANAGER;
     }
@@ -31,8 +29,6 @@ public final class IndexingManager {
 
     private IndexingManager() {
         Bean.register(WebContent.class);
-        Bean.register(BulkIndexHeader.class);
-        Bean.register(BulkUpdateHeader.class);
         client = HTTPClient.builder().build();
         bulkIndexRequestBodyLine = new ArrayList<>();
     }
@@ -47,24 +43,17 @@ public final class IndexingManager {
     }
 
     public void index(String siteName, WebContent webContent) {
-        var req = new BulkIndexHeader();
-        var body = new BulkHeaderContent();
-        body.index = siteName;
-        body.id = WebsiteUtils.getUrlId(webContent.url);
-        req.content = body;
-        bulkIndexRequestBodyLine.add(Bean.toJSON(req));
+        String docId = WebsiteUtils.getUrlId(webContent.url);
+        String headerPart = "{\"index\":{\"_index\":\"" + siteName + "\",\"_id\":\"" + docId + "\"}}";
+        bulkIndexRequestBodyLine.add(headerPart);
         bulkIndexRequestBodyLine.add(Bean.toJSON(webContent));
 
         if (bulkIndexRequestBodyLine.size() / 2 > BULK_SIZE) sendBulkRequest();
     }
 
-    public void update(String siteName, String id, String updatedFieldAndValue) {
-        var req = new BulkUpdateHeader();
-        var body = new BulkHeaderContent();
-        body.index = siteName;
-        body.id = id;
-        req.content = body;
-        bulkIndexRequestBodyLine.add(Bean.toJSON(req));
+    public void update(String siteName, String docId, String updatedFieldAndValue) {
+        String headerPart = "{\"update\":{\"_index\":\"" + siteName + "\",\"_id\":\"" + docId + "\"}}";
+        bulkIndexRequestBodyLine.add(headerPart);
         String updatePart = "{\"doc\": " + updatedFieldAndValue + "}";
         bulkIndexRequestBodyLine.add(updatePart);
 

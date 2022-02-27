@@ -67,9 +67,9 @@ public class PageRankCalculator {
         for (int i = 0; i < iteration; i++) {
             System.out.println(i + " iteration");
             double[] newPageRankVector = MatrixUtils.vectorTimesMatrix(pageRankVector, pageLinkMatrix);
-
             MatrixUtils.multiplyValueToVector(dampingFactor, newPageRankVector);
             MatrixUtils.addValueToVector(1 - dampingFactor, newPageRankVector);
+
             if (normalizationMode == 1 || normalizationMode == 2 && i == iteration - 1) {
                 MatrixUtils.normalizeVector(newPageRankVector);
             }

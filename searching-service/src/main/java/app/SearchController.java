@@ -1,5 +1,6 @@
 package app;
 
+import app.util.Formatter;
 import core.framework.api.http.HTTPStatus;
 import core.framework.http.ContentType;
 import core.framework.http.HTTPClient;
@@ -10,13 +11,23 @@ import core.framework.inject.Inject;
 import core.framework.web.Controller;
 import core.framework.web.Request;
 import core.framework.web.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Jordan
  */
 public class SearchController implements Controller {
+    private static final Map<Integer, HTTPStatus> HTTP_STATUS_MAP =
+            Arrays.stream(HTTPStatus.class.getEnumConstants())
+                  .map(enumConst -> Map.entry(enumConst.code, enumConst))
+                  .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+    private final Logger logger = LoggerFactory.getLogger(SearchController.class);
     @Inject
     HTTPClient client;
 
@@ -33,10 +44,12 @@ public class SearchController implements Controller {
         HTTPRequest httpRequest = new HTTPRequest(HTTPMethod.POST, "http://127.0.0.1:9200" + request.path());
         httpRequest.body(request.body().orElseThrow(), ContentType.APPLICATION_JSON);
         HTTPResponse response = client.execute(httpRequest);
-        return Response.text(response.text()).contentType(ContentType.APPLICATION_JSON).status(toStatus(response.statusCode));
-    }
+        logger.info("es response= " + Formatter.parseJson(response.text()));
 
-    private HTTPStatus toStatus(int statusCode) {
-        return Arrays.stream(HTTPStatus.class.getEnumConstants()).filter(status -> status.code == statusCode).findAny().orElse(HTTPStatus.OK);
+        return Response
+                .text(response.text())
+                .contentType(ContentType.APPLICATION_JSON)
+                .header("Access-Control-Allow-Origin", "*")
+                .status(HTTP_STATUS_MAP.getOrDefault(response.statusCode, HTTPStatus.OK));
     }
 }
