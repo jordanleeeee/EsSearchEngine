@@ -34,8 +34,8 @@ public class SearchController implements Controller {
     @Override
     public Response execute(Request request) {
         String[] parts = request.path().split("/");
-        if ((parts.length != 2 || !parts[0].isEmpty() || !parts[1].equals("_search"))
-                && (parts.length != 3 || !parts[0].isEmpty() || parts[1].isEmpty() || !parts[2].equals("_search"))) {
+        if ((parts.length != 2 || !parts[0].isEmpty() || !"_search".equals(parts[1]))
+                && (parts.length != 3 || !parts[0].isEmpty() || parts[1].isEmpty() || !"_search".equals(parts[2]))) {
             return Response.text("query not allow").status(HTTPStatus.BAD_REQUEST);
         }
         if (request.body().isEmpty()) {
