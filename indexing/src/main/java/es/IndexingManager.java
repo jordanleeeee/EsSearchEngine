@@ -1,5 +1,6 @@
 package es;
 
+import config.Configuration;
 import core.framework.crypto.Hash;
 import core.framework.http.ContentType;
 import core.framework.http.HTTPClient;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public final class IndexingManager {
     private static final IndexingManager MANAGER = new IndexingManager();
-    private static final int BULK_SIZE = 100;
+    private static final int BULK_SIZE = 50;
 
     public static IndexingManager getInstance() {
         return MANAGER;
@@ -36,7 +37,7 @@ public final class IndexingManager {
     @Deprecated
     public void indexOne(String siteName, WebContent webContent) {
         String documentId = Hash.sha1Hex(webContent.url).substring(20);
-        String url = Strings.format("http://127.0.0.1:9200/{}/_doc/{}", siteName, documentId);
+        String url = Strings.format(Configuration.esPath + "/{}/_doc/{}", siteName, documentId);
         HTTPRequest postRequest = new HTTPRequest(HTTPMethod.POST, url);
         postRequest.body(Bean.toJSON(webContent), ContentType.APPLICATION_JSON);
         System.out.println(client.execute(postRequest).text());
@@ -67,7 +68,7 @@ public final class IndexingManager {
     private void sendBulkRequest() {
         if (bulkIndexRequestBodyLine.isEmpty()) return;
         System.out.println("sent bulk index request");
-        HTTPRequest postRequest = new HTTPRequest(HTTPMethod.POST, "http://127.0.0.1:9200/_bulk");
+        HTTPRequest postRequest = new HTTPRequest(HTTPMethod.POST, Configuration.esPath + "/_bulk");
         String body = String.join("\n", bulkIndexRequestBodyLine) + '\n';
         postRequest.body(body, ContentType.APPLICATION_JSON);
         System.out.println(client.execute(postRequest).text());

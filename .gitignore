@@ -4,3 +4,4 @@ build/
 *.iml
 /classes/
 .DS_Store
+*/*/*/resources/web/

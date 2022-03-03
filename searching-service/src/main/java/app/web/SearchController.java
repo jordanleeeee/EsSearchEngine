@@ -1,4 +1,4 @@
-package app;
+package app.web;
 
 import app.util.Formatter;
 import core.framework.api.http.HTTPStatus;
@@ -28,12 +28,19 @@ public class SearchController implements Controller {
                   .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     private final Logger logger = LoggerFactory.getLogger(SearchController.class);
+    private final String esUrl;
+
     @Inject
     HTTPClient client;
 
+    public SearchController(String esUrl) {
+        this.esUrl = esUrl;
+    }
+
     @Override
     public Response execute(Request request) {
-        String[] parts = request.path().split("/");
+        String path = request.path().substring(5);
+        String[] parts = path.split("/");
         if ((parts.length != 2 || !parts[0].isEmpty() || !"_search".equals(parts[1]))
                 && (parts.length != 3 || !parts[0].isEmpty() || parts[1].isEmpty() || !"_search".equals(parts[2]))) {
             return Response.text("query not allow").status(HTTPStatus.BAD_REQUEST);
@@ -41,7 +48,7 @@ public class SearchController implements Controller {
         if (request.body().isEmpty()) {
             return Response.text("empty request body").status(HTTPStatus.BAD_REQUEST);
         }
-        HTTPRequest httpRequest = new HTTPRequest(HTTPMethod.POST, "http://127.0.0.1:9200" + request.path());
+        HTTPRequest httpRequest = new HTTPRequest(HTTPMethod.POST, esUrl + path);
         httpRequest.body(request.body().orElseThrow(), ContentType.APPLICATION_JSON);
         HTTPResponse response = client.execute(httpRequest);
         logger.info("es response= " + Formatter.parseJson(response.text()));

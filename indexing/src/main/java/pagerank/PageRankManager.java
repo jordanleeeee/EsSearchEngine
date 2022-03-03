@@ -1,5 +1,6 @@
 package pagerank;
 
+import config.Configuration;
 import core.framework.http.ContentType;
 import core.framework.http.HTTPClient;
 import core.framework.http.HTTPMethod;
@@ -29,7 +30,7 @@ public class PageRankManager {
     }
 
     public void calculateAndUpdate(String siteName) {
-        HTTPRequest searchRequest = new HTTPRequest(HTTPMethod.POST, "http://127.0.0.1:9200/" + siteName + "/_search");
+        HTTPRequest searchRequest = new HTTPRequest(HTTPMethod.POST, Configuration.esPath + "/" + siteName + "/_search");
         searchRequest.body(REQUEST_JSON, ContentType.APPLICATION_JSON);
         HTTPResponse response = client.execute(searchRequest);
 
