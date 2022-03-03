@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug
+  namespace: search
+  labels:
+    app: debug
+spec:
+  containers:
+  - name: debug
+    image: jordanleeeee/sample_app:latest
+
