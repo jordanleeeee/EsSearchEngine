@@ -26,7 +26,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /health-check
-            scheme: HTTP
+            scheme: HTTPS
             port: 8443
           initialDelaySeconds: 10
           periodSeconds: 10

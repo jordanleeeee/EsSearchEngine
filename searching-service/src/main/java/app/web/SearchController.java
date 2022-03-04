@@ -53,10 +53,9 @@ public class SearchController implements Controller {
         HTTPResponse response = client.execute(httpRequest);
         logger.info("es response= " + Formatter.parseJson(response.text()));
 
-        return Response
-                .text(response.text())
-                .contentType(ContentType.APPLICATION_JSON)
-                .header("Access-Control-Allow-Origin", "*")
-                .status(HTTP_STATUS_MAP.getOrDefault(response.statusCode, HTTPStatus.OK));
+        return Response.bytes(response.body)
+                       .contentType(ContentType.APPLICATION_JSON)
+                       .header("Access-Control-Allow-Origin", "*")
+                       .status(HTTP_STATUS_MAP.getOrDefault(response.statusCode, HTTPStatus.OK));
     }
 }
