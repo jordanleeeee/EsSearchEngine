@@ -40,14 +40,11 @@ public class SearchController implements Controller {
     @Override
     public Response execute(Request request) {
         String path = request.path().substring(5);
-        String[] parts = path.split("/");
-        if ((parts.length != 2 || !parts[0].isEmpty() || !"_search".equals(parts[1]))
-                && (parts.length != 3 || !parts[0].isEmpty() || parts[1].isEmpty() || !"_search".equals(parts[2]))) {
-            return Response.text("query not allow").status(HTTPStatus.BAD_REQUEST);
+
+        if (isValidSearchQuery(request)) {
+            return Response.text("invalid search query").status(HTTPStatus.BAD_REQUEST);
         }
-        if (request.body().isEmpty()) {
-            return Response.text("empty request body").status(HTTPStatus.BAD_REQUEST);
-        }
+
         HTTPRequest httpRequest = new HTTPRequest(HTTPMethod.POST, esUrl + path);
         httpRequest.body(request.body().orElseThrow(), ContentType.APPLICATION_JSON);
         HTTPResponse response = client.execute(httpRequest);
@@ -57,5 +54,14 @@ public class SearchController implements Controller {
                        .contentType(ContentType.APPLICATION_JSON)
                        .header("Access-Control-Allow-Origin", "*")
                        .status(HTTP_STATUS_MAP.getOrDefault(response.statusCode, HTTPStatus.OK));
+    }
+
+    public boolean isValidSearchQuery(Request request) {
+        String[] parts = request.path().substring(5).split("/");
+        if ((parts.length != 2 || !parts[0].isEmpty() || !"_search".equals(parts[1]))
+                && (parts.length != 3 || !parts[0].isEmpty() || parts[1].isEmpty() || !"_search".equals(parts[2]))) {
+            return false;
+        }
+        return request.body().isEmpty();
     }
 }

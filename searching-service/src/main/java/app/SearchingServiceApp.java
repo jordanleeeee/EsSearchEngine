@@ -20,8 +20,12 @@ public class SearchingServiceApp extends App {
 
         bind(HTTPClient.class, HTTPClient.builder().build());
 
-        http().route(HTTPMethod.GET, "/", bind(HomeController.class));
-        http().route(HTTPMethod.GET, "/:path(*)", bean(HomeController.class));
+        HomeController homeController = bind(HomeController.class);
+        http().route(HTTPMethod.GET, "/", homeController::index);
+        http().route(HTTPMethod.GET, "/favicon.ico", homeController::icon);
+        http().route(HTTPMethod.GET, "/:path(*)", homeController::index);
+        http().route(HTTPMethod.GET, "/static/:path(*)", homeController::staticResources);
+
         http().route(HTTPMethod.POST, "/ajax/:path(*)", bind(new SearchController(requiredProperty("app.elasticSearchURL"))));
 
         // for pre-flight in CORS
