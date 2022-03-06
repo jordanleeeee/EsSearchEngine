@@ -28,7 +28,7 @@ public class HomeController implements Controller {
                            .status(HTTPStatus.OK);
         } catch (Error error) {
             logger.warn(Markers.errorCode("RESOURCES_NOT_FOUND"), error.getMessage());
-            return Response.text(ClasspathResources.text("web/notFound.html"))
+            return Response.bytes(ClasspathResources.bytes("web/notFound.html"))
                            .contentType(ContentType.TEXT_HTML)
                            .status(HTTPStatus.NOT_FOUND);
         }
@@ -40,7 +40,7 @@ public class HomeController implements Controller {
         } else if (path.endsWith(".js")) {
             return ContentType.APPLICATION_JAVASCRIPT;
         } else if (path.endsWith(".ioc")) {
-            return ContentType.IMAGE_PNG;
+            return ContentType.create("image/x-icon", null);
         } else {
             return ContentType.TEXT_HTML;
         }
