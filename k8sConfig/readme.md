@@ -35,9 +35,9 @@ source ~/.bashrc
 
 sudo apt-get install fish
 mkdir -p ~/.config/fish/completions
-$ cd ~/.config/fish
-$ git clone https://github.com/evanlucas/fish-kubectl-completions
-$ ln -s ../fish-kubectl-completions/completions/kubectl.fish completions/
+cd ~/.config/fish
+git clone https://github.com/evanlucas/fish-kubectl-completions
+ln -s ../fish-kubectl-completions/completions/kubectl.fish completions/
 ```
 
 init setup
