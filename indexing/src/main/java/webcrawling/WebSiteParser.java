@@ -41,7 +41,7 @@ public class WebSiteParser {
         return getHtmlDoc(url, cachePath, jsRenderingEnabled).flatMap(html -> {
             Document htmlDoc = Jsoup.parse(html);
 
-            WebContent content = new WebContent();
+            var content = new WebContent();
             content.url = url;
             content.title = htmlDoc.title();
             content.size = htmlDoc.html().getBytes().length;

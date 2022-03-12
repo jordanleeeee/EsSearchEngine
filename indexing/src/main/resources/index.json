@@ -15,7 +15,8 @@
           "filter": [
             "lowercase",
             "porter_stem",
-            "stop"
+            "stop",
+            "length_gte_3"
           ]
         }
       },
@@ -26,6 +27,12 @@
             "mcdonald's => mcdonald",
             ":( => sad"
           ]
+        }
+      },
+      "filter": {
+        "length_gte_3": {
+          "type": "length",
+          "min": 3
         }
       }
     }
@@ -57,7 +64,7 @@
         }
       },
       "size": {
-        "type": "long"
+        "type": "integer"
       },
       "updatedTime": {
         "type": "date"
@@ -75,7 +82,12 @@
         "index": "false"
       },
       "pageRank": {
-        "type": "rank_feature"
+        "type": "rank_feature",
+        "fields": {
+          "numeric": {
+            "type": "float"
+          }
+        }
       }
     }
   }

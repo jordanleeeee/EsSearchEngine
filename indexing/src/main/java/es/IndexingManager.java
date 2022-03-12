@@ -49,7 +49,7 @@ public final class IndexingManager {
         bulkIndexRequestBodyLine.add(headerPart);
         bulkIndexRequestBodyLine.add(Bean.toJSON(webContent));
 
-        if (bulkIndexRequestBodyLine.size() / 2 > BULK_SIZE) sendBulkRequest();
+        if (bulkIndexRequestBodyLine.size() > BULK_SIZE * 2) sendBulkRequest();
     }
 
     public void update(String siteName, String docId, String updatedFieldAndValue) {
@@ -58,7 +58,7 @@ public final class IndexingManager {
         String updatePart = "{\"doc\": " + updatedFieldAndValue + "}";
         bulkIndexRequestBodyLine.add(updatePart);
 
-        if (bulkIndexRequestBodyLine.size() / 2 > BULK_SIZE) sendBulkRequest();
+        if (bulkIndexRequestBodyLine.size() > BULK_SIZE * 2) sendBulkRequest();
     }
 
     public void flushBulkRequest() {
