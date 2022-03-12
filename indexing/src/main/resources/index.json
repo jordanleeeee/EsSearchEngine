@@ -16,13 +16,13 @@
       },
       "body": {
         "properties": {
-          "content": {
-            "type": "text"
-          },
           "h1": {
             "type": "text"
           },
           "h2": {
+            "type": "text"
+          },
+          "content": {
             "type": "text"
           }
         }
@@ -34,7 +34,12 @@
         "type": "date"
       },
       "tags": {
-        "type": "keyword"
+        "type": "keyword",
+        "fields": {
+          "suggest": {
+            "type": "completion"
+          }
+        }
       },
       "links": {
         "type": "keyword",
