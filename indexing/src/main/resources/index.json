@@ -3,6 +3,31 @@
     "index": {
       "number_of_shards": "3",
       "number_of_replicas": "0"
+    },
+    "analysis": {
+      "analyzer": {
+        "customTextAnalyzer": {
+          "type": "custom",
+          "char_filter": [
+            "customTextFilter"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "porter_stem",
+            "stop"
+          ]
+        }
+      },
+      "char_filter": {
+        "customTextFilter": {
+          "type": "mapping",
+          "mappings": [
+            "mcdonald's => mcdonald",
+            ":( => sad"
+          ]
+        }
+      }
     }
   },
   "mappings": {
@@ -12,18 +37,22 @@
         "index": "false"
       },
       "title": {
-        "type": "text"
+        "type": "text",
+        "analyzer": "customTextAnalyzer"
       },
       "body": {
         "properties": {
           "h1": {
-            "type": "text"
+            "type": "text",
+            "analyzer": "customTextAnalyzer"
           },
           "h2": {
-            "type": "text"
+            "type": "text",
+            "analyzer": "customTextAnalyzer"
           },
           "content": {
-            "type": "text"
+            "type": "text",
+            "analyzer": "customTextAnalyzer"
           }
         }
       },

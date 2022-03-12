@@ -12,6 +12,6 @@ public class Main {
         spider.bfs("https://www.mcdonalds.com.hk/en", 1000, false);
         spider.bfs("https://www.starbucks.com.hk", 1000, false);
         spider.bfs("https://www.subway.com.hk", 1000, false);
-        WebBrowser.getInstance().closeBrowser();
+        WebBrowser.closeBrowser();
     }
 }

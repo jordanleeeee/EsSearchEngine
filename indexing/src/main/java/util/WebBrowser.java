@@ -26,8 +26,10 @@ public final class WebBrowser {
         page = playwright.chromium().launch().newPage();
     }
 
-    public void closeBrowser() {
-        playwright.close();
+    public static void closeBrowser() {
+        if (webBrowser != null) {
+            webBrowser.playwright.close();
+        }
     }
 
     public String getPageContent(String url) throws IOException {

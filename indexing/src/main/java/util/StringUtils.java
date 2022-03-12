@@ -14,7 +14,6 @@ public class StringUtils {
                 content.toLowerCase().replaceAll("[^a-zA-Z\\s]", "").split("\\s+")
         ).distinct().filter(tag -> tag.length() > 4).toList();
 
-        System.out.println(words);
         for (int i = 1; i <= words.size(); i++) {
             for (int j = 0; j <= words.size() - i; j++) {
                 tags.add(String.join(" ", words.subList(j, j + i)));
@@ -25,6 +24,6 @@ public class StringUtils {
     }
 
     public static List<String> getTags(List<String> contents) {
-        return contents.stream().flatMap(content -> getTags(content).stream()).distinct().toList();
+        return contents.stream().flatMap(content -> getTags(content).stream()).distinct().filter(l -> !l.isEmpty()).toList();
     }
 }
