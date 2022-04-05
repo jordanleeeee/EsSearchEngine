@@ -8,6 +8,7 @@ import util.FileUtils;
 import util.StringUtils;
 import util.WebsiteUtils;
 
+import java.io.File;
 import java.util.Optional;
 
 public class WebSiteParser {
@@ -43,6 +44,7 @@ public class WebSiteParser {
 
             var content = new WebContent();
             content.url = url;
+            content.shop = siteName;
             content.title = htmlDoc.title();
             content.size = htmlDoc.html().getBytes().length;
             content.body = WebsiteUtils.getPageBody(htmlDoc);
@@ -58,6 +60,8 @@ public class WebSiteParser {
     }
 
     public void saveHtmlToCacheIfNeeded(String cachePath, String html) {
-        FileUtils.save(cachePath, html);
+        if (!new File(cachePath).exists()) {
+            FileUtils.save(cachePath, html);
+        }
     }
 }

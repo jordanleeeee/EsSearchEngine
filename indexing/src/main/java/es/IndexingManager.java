@@ -1,7 +1,6 @@
 package es;
 
 import config.Configuration;
-import core.framework.crypto.Hash;
 import core.framework.http.ContentType;
 import core.framework.http.HTTPClient;
 import core.framework.http.HTTPMethod;
@@ -36,24 +35,24 @@ public final class IndexingManager {
 
     @Deprecated
     public void indexOne(String siteName, WebContent webContent) {
-        String documentId = Hash.sha1Hex(webContent.url).substring(20);
+        String documentId = WebsiteUtils.getUrlId(webContent.url);
         String url = Strings.format(Configuration.esPath + "/{}/_doc/{}", siteName, documentId);
         HTTPRequest postRequest = new HTTPRequest(HTTPMethod.POST, url);
         postRequest.body(Bean.toJSON(webContent), ContentType.APPLICATION_JSON);
         System.out.println(client.execute(postRequest).text());
     }
 
-    public void index(String siteName, WebContent webContent) {
+    public void index(WebContent webContent) {
         String docId = WebsiteUtils.getUrlId(webContent.url);
-        String headerPart = "{\"index\":{\"_index\":\"" + siteName + "\",\"_id\":\"" + docId + "\"}}";
+        String headerPart = "{\"index\":{\"_index\":\"restaurant\",\"_id\":\"" + docId + "\"}}";
         bulkIndexRequestBodyLine.add(headerPart);
         bulkIndexRequestBodyLine.add(Bean.toJSON(webContent));
 
         if (bulkIndexRequestBodyLine.size() > BULK_SIZE * 2) sendBulkRequest();
     }
 
-    public void update(String siteName, String docId, String updatedFieldAndValue) {
-        String headerPart = "{\"update\":{\"_index\":\"" + siteName + "\",\"_id\":\"" + docId + "\"}}";
+    public void update(String docId, String updatedFieldAndValue) {
+        String headerPart = "{\"update\":{\"_index\":\"restaurant\",\"_id\":\"" + docId + "\"}}";
         bulkIndexRequestBodyLine.add(headerPart);
         String updatePart = "{\"doc\": " + updatedFieldAndValue + "}";
         bulkIndexRequestBodyLine.add(updatePart);

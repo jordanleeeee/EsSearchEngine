@@ -7,6 +7,7 @@ import core.framework.http.HTTPMethod;
 import core.framework.http.HTTPRequest;
 import core.framework.http.HTTPResponse;
 import core.framework.json.Bean;
+import core.framework.util.Strings;
 import es.IndexingManager;
 import es.searchresponse.SearchResponse;
 
@@ -17,7 +18,19 @@ import java.util.Map;
  */
 public class PageRankManager {
     private static final String REQUEST_JSON = """
-            {"query":{"match_all": {}},"_source": ["url","links"],"size":1000}
+            {
+                "query": {
+                    "bool": {
+                        "filter": [
+                            {
+                                "term": {"shop": {"value": "{}"}}
+                            }
+                        ]
+                    }
+                },
+                "_source": ["url", "links"],
+                "size": 1000
+            }
             """;
 
     private final HTTPClient client;
@@ -30,20 +43,20 @@ public class PageRankManager {
     }
 
     public void calculateAndUpdate(String siteName) {
-        HTTPRequest searchRequest = new HTTPRequest(HTTPMethod.POST, Configuration.esPath + "/" + siteName + "/_search");
-        searchRequest.body(REQUEST_JSON, ContentType.APPLICATION_JSON);
+        HTTPRequest searchRequest = new HTTPRequest(HTTPMethod.POST, Configuration.esPath + "/restaurant/_search");
+        searchRequest.body(Strings.format(REQUEST_JSON, siteName), ContentType.APPLICATION_JSON);
         HTTPResponse response = client.execute(searchRequest);
 
         SearchResponse searchResponse = Bean.fromJSON(SearchResponse.class, response.text());
         var pageRankCalculator = new PageRankCalculator(searchResponse, 50, 0.85, 2);
         pageRankCalculator.calculatePageRank();
-        updatePageRank(siteName, pageRankCalculator.getPageRankMap());
+        updatePageRank(pageRankCalculator.getPageRankMap());
     }
 
-    private void updatePageRank(String site, Map<String, Double> pageRankMap) {
+    private void updatePageRank(Map<String, Double> pageRankMap) {
         for (Map.Entry<String, Double> pageRankInfo : pageRankMap.entrySet()) {
             String updatedField = "{\"pageRank\":" + pageRankInfo.getValue() + "}";
-            indexingManager.update(site, pageRankInfo.getKey(), updatedField);
+            indexingManager.update(pageRankInfo.getKey(), updatedField);
         }
         indexingManager.flushBulkRequest();
     }

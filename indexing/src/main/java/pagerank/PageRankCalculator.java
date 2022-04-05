@@ -31,7 +31,7 @@ public class PageRankCalculator {
         this.iteration = iteration;
         this.dampingFactor = dampingFactor;
         this.normalizationMode = normalizationMode;
-        pageIdToIndexMap = new HashMap<>();
+        pageIdToIndexMap = new HashMap<>(searchResponse.hits.hitDetails.size());
 
         int nextIndex = 0;
         for (SearchResponse.HitDetails hitDetail : searchResponse.hits.hitDetails) {

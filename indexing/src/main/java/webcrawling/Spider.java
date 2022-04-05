@@ -45,7 +45,7 @@ public class Spider {
             Optional<WebContent> webContentOptional = parser.getContentOfPage(siteName, nextUrl, url, jsRenderingEnabled);
             if (webContentOptional.isEmpty()) continue;
             WebContent webContent = webContentOptional.get();
-            indexingService.index(siteName, webContent);
+            indexingService.index(webContent);
             queue.addAll(webContent.links);
         }
         indexingService.flushBulkRequest();

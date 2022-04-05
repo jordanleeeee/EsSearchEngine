@@ -16,12 +16,10 @@ public class FileUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileUtils.class);
 
     public static void save(String path, String content) {
-        if (!new File(path).exists()) {
-            try (FileWriter fileWriter = new FileWriter(path)) {
-                fileWriter.write(content);
-            } catch (IOException e) {
-                LOGGER.error(e.getMessage());
-            }
+        try (FileWriter fileWriter = new FileWriter(path)) {
+            fileWriter.write(content);
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage());
         }
     }
 
