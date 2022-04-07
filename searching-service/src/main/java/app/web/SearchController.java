@@ -41,7 +41,7 @@ public class SearchController implements Controller {
     public Response execute(Request request) {
         String path = request.path().substring(5);
 
-        if (isValidSearchQuery(request)) {
+        if (!path.startsWith("/restaurant/_search")) {
             return Response.text("invalid search query").status(HTTPStatus.BAD_REQUEST);
         }
 
@@ -54,14 +54,5 @@ public class SearchController implements Controller {
                        .contentType(ContentType.APPLICATION_JSON)
                        .header("Access-Control-Allow-Origin", "*")
                        .status(HTTP_STATUS_MAP.getOrDefault(response.statusCode, HTTPStatus.OK));
-    }
-
-    public boolean isValidSearchQuery(Request request) {
-        String[] parts = request.path().substring(5).split("/");
-        if ((parts.length != 2 || !parts[0].isEmpty() || !"_search".equals(parts[1]))
-                && (parts.length != 3 || !parts[0].isEmpty() || parts[1].isEmpty() || !"_search".equals(parts[2]))) {
-            return false;
-        }
-        return request.body().isEmpty();
     }
 }
