@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd ../se-frontend
+cd ../EsFrontend
 npm run build
 rm -r ../EsSearchEngine/searching-service/src/main/resources/web
 mv build ../EsSearchEngine/searching-service/src/main/resources/web
